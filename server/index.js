@@ -86,7 +86,7 @@ app.get('https://fierce-chamber-42175.herokuapp.com/login', function(req, res) {
 // })
 
   //request access token
-app.get('/callback', function(req, res) {
+app.get('https://fierce-chamber-42175.herokuapp.com/callback', function(req, res) {
 
     var code = req.query.code || code || null ;
     var state = req.query.state || state || null;
@@ -142,7 +142,7 @@ app.get('/callback', function(req, res) {
     }
   });
 
-app.get('/usertoptracks', function(req, res) {
+app.get('https://fierce-chamber-42175.herokuapp.com/usertoptracks', function(req, res) {
     spotifyApi.getMyTopTracks({ limit: 50})
     .then(function(data) {
       let topTracks = data.body.items;
@@ -182,7 +182,7 @@ app.get('/usertoptracks', function(req, res) {
     });
   });
 
-  app.get('/trackdata/', function(req, res) {
+  app.get('https://fierce-chamber-42175.herokuapp.com/trackdata/', function(req, res) {
     let trackiesy = req.query.tracks;
     // console.log(trackiesy);
     spotifyApi.getAudioFeaturesForTracks(trackiesy)
@@ -196,7 +196,7 @@ app.get('/usertoptracks', function(req, res) {
     });
   });
 
-  app.get('/playlisttracks/', function(req, res) {
+  app.get('https://fierce-chamber-42175.herokuapp.com/playlisttracks/', function(req, res) {
     let playlist = req.query.playlist;
     spotifyApi.getPlaylistTracks(playlist, {
     offset: 0,
