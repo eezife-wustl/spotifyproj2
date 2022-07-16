@@ -155,13 +155,13 @@ function Submit(props) {
           {/* <a id="startButton" className="start" onClick={hideButton}>Start Here</a>  */}
           {status ?  
           <>
-          <a id="startButton" className="start" href="http://localhost:3001/login" onClick={hideButton}>Login to Spotify</a>
+          <a id="startButton" className="start" href="https://fierce-chamber-42175.herokuapp.com/login" onClick={hideButton}>Login to Spotify</a>
           <form className="toAlignStuff" onSubmit={handleSubmit}>
            <input type="submit" value="Generate Musiac!" className="submitbutton"/>
           </form> 
           </>
           : 
-          <a id="startButton" className="start" href="http://localhost:3001/login" onClick={hideButton}>Login to Spotify</a> }
+          <a id="startButton" className="start" href="https://fierce-chamber-42175.herokuapp.com/login" onClick={hideButton}>Login to Spotify</a> }
 
           {/* {error} */}
           {/* {items.map((track, index) => (

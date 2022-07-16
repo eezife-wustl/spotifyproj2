@@ -15,6 +15,7 @@ const app = express()
 const port = 3001
 //const unirest = require("unirest")
 var redirect_uri = 'http://localhost:3001/callback'
+var prod_uri = 'https://fierce-chamber-42175.herokuapp.com/'
 const client_id = process.env.CLIENT;
 const client_secret = process.env.SECRET;
 const code_challenge_method = 'S256'
@@ -125,7 +126,7 @@ app.get('/callback', function(req, res) {
           //   'access_token': access_token
           // });
           //res.redirect("http://localhost:3000");
-          res.redirect("http://localhost:3001/refresh_token");
+          res.redirect("https://fierce-chamber-42175.herokuapp.com/refresh_token");
         }
         else {
           // res.send({
@@ -134,7 +135,7 @@ app.get('/callback', function(req, res) {
           //   'body': body
           // });
           //res.redirect("http://localhost:3000");
-         res.redirect("http://localhost:3001/refresh_token");
+         res.redirect("https://fierce-chamber-42175.herokuapp.com/refresh_token");
         }
       });
     }
@@ -213,7 +214,7 @@ app.get('/usertoptracks', function(req, res) {
   );
   });
 
-  app.listen(3001, function () {
+  app.listen(process.env.PORT, function () {
     console.log("express has started on port 3001");
   });
 //request top tracks

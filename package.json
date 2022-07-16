@@ -20,7 +20,7 @@
     "eject": "react-scripts eject",
     "server": "nodemon index.js --ignore client"
   },
-  "proxy": "http://localhost:3001",
+  "proxy": "https://fierce-chamber-42175.herokuapp.com",
   "eslintConfig": {
     "extends": [
       "react-app",
