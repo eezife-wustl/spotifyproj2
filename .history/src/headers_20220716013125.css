@@ -1,0 +1,70 @@
+@font-face {
+    font-family: 'Jost Heavy';
+    src: url('../Jost/TrueType/Jost-800-Heavy.ttf') format('truetype');      
+}
+
+@font-face {
+  font-family: 'Jost Heavy Italic';
+  src: url('../Jost/TrueType/Jost-800-HeavyItalic.ttf') format('truetype');      
+}
+
+@font-face {
+  font-family: 'Jost Book';
+  src: url('../Jost/TrueType/Jost-400-Book.ttf') format('truetype');      
+}
+
+@font-face {
+  font-family: 'Jost Light';
+  src: url('../Jost/TrueType/Jost-300-Light.ttf') format('truetype');      
+}
+
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .header {font-size: 1rem}
+}
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .header {font-size: 1.5rem}
+}
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .header {font-size: 8rem}
+}
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .header {font-size: 8rem}
+}
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+  .header {font-size: 8rem}
+}
+
+  .header {
+    font-family: 'Jost Heavy Italic';
+    color: white;
+    letter-spacing: 1rem;
+    /* font-size: 8rem; */
+    margin: 0;
+    text-align: center;
+    padding: 0;
+  }
+
+  .byErika {
+    font-family: 'Jost Book';
+    color: white;
+    /* letter-spacing: 0.2rem; */
+    font-size: 3rem;
+    margin: 0;
+    text-align: center;
+    padding: 0;
+  }
+
+  .details {
+    font-family: 'Jost Light';
+    color: white;
+    font-size: 2rem;
+    margin: 0;
+    text-align: center;
+    padding: 0;
+  }

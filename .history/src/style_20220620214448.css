@@ -1,0 +1,9 @@
+html {
+    font-size: 62.5%;
+    /*10px*/
+  }
+
+body { 
+    background-image: url('../background.png');
+    background-attachment: fixed;
+}

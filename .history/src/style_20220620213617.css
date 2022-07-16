@@ -1,0 +1,9 @@
+html {
+    font-size: 62.5%;
+    /*10px*/
+  }
+
+body { 
+    background-image: url('./for_the_background_i_think.png');
+    background-attachment: fixed;
+}

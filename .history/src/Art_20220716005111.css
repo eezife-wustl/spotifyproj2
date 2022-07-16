@@ -1,0 +1,10 @@
+.alignTheArt {
+    display:flex;
+    flex-direction: row;
+    margin: 1rem;
+   }
+
+.ArtworkDesc {
+    margin: 3rem;
+    font-size: 5rem;
+}

@@ -1,0 +1,26 @@
+@font-face {
+    font-family: 'Jost Heavy';
+    src: url('../Jost/TrueType/Jost-800-Heavy.ttf') format('truetype');      
+}
+
+@media (min-width: 248px) {  
+    .nav-link { font-size: 1em; }
+}
+
+/*medium*/
+/* @media (min-width: 768px) {  
+    .navbar-brand {font-size:8rem;} 
+  } */
+
+/*large*/
+@media (min-width: 992px) { 
+    .navbar-brand {font-size:8.5rem;} 
+    .static-top-2 {padding-top: 0rem; }
+    .static-top-1 {padding: 0rem; }
+    #myWordForm { padding-top: 0rem; }
+    .nav-link { font-size: 1.5em; }
+  }
+
+  .header {
+    font-family: 'Jost Heavy';
+  }

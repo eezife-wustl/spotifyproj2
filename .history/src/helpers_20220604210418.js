@@ -1,0 +1,3 @@
+audioData( ) {
+return 0;
+}

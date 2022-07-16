@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Jost Heavy';
+    src: url('../Jost/TrueType/Jost-800-Heavy.ttf') format('truetype');      
+}
+
+@font-face {
+  font-family: 'Jost Heavy Italic';
+  src: url('../Jost/TrueType/Jost-800-HeavyItalic.ttf') format('truetype');      
+}
+
+@font-face {
+  font-family: 'Jost Book';
+  src: url('../Jost/TrueType/Jost-400-Book.ttf') format('truetype');      
+}
+
+@font-face {
+  font-family: 'Jost Light';
+  src: url('../Jost/TrueType/Jost-300-Light.ttf') format('truetype');      
+}
+
+.start {
+  text-decoration: none;
+  color: white;
+  font-family: Jost Light;
+  /* border: 1rem; */
+  border-style: solid;
+  padding: 1rem;
+  margin-top: 10rem;
+  margin-bottom: 2rem;
+ }
+
+ .submitbutton {
+   border: none;
+   color: turquoise;
+   padding: 1rem;
+   margin-top: 3rem;
+   margin-bottom: 2rem;
+ }

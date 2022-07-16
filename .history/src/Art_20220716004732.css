@@ -1,0 +1,8 @@
+.alignTheArt {
+    display:flex;
+    flex-direction: row;
+   }
+
+.Artwork {
+    margin: 3rem;
+}

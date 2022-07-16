@@ -1,0 +1,13 @@
+.alignTheArt {
+    display:flex;
+    flex-direction: row;
+    margin: 1rem;
+   }
+
+.ArtworkDesc {
+    margin: 3rem;
+    font-size: 1.75rem;
+    color: white;
+    font-family: Jost Book;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
