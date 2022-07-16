@@ -64,7 +64,7 @@ var scope = 'user-top-read';
 // })))
 
 // request access from user
-app.get('/login', function(req, res) {   
+app.get('https://fierce-chamber-42175.herokuapp.com/login', function(req, res) {   
     req.header("Access-Control-Allow-Origin", "*");
     var scope = 'user-top-read';
   
