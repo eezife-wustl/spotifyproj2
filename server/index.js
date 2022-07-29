@@ -16,8 +16,8 @@ const app = express()
 const port = process.env.PORT || 3001
 //const unirest = require("unirest")
 //var redirect_uri = 'http://localhost:3001/callback'
-var redirect_uri = 'https://fierce-chamber-42175.herokuapp.com/callback'
-var prod_uri = 'https://fierce-chamber-42175.herokuapp.com/callback'
+var redirect_uri = 'https://dry-cliffs-43170.herokuapp.com/callback'
+var prod_uri = 'https://dry-cliffs-43170.herokuapp.com/callback'
 const client_id = process.env.CLIENT;
 const client_secret = process.env.SECRET;
 const code_challenge_method = 'S256'
@@ -65,7 +65,7 @@ var scope = 'user-top-read';
 // })))
 
 // request access from user
-app.get('https://fierce-chamber-42175.herokuapp.com/login', function(req, res) {   
+app.get('https://dry-cliffs-43170.herokuapp.com/login', function(req, res) {   
     req.header("Access-Control-Allow-Origin", "*");
     var scope = 'user-top-read';
   
@@ -87,7 +87,7 @@ app.get('https://fierce-chamber-42175.herokuapp.com/login', function(req, res) {
 // })
 
   //request access token
-app.get('https://fierce-chamber-42175.herokuapp.com/callback', function(req, res) {
+app.get('https://dry-cliffs-43170.herokuapp.com/callback', function(req, res) {
 
     var code = req.query.code || code || null ;
     var state = req.query.state || state || null;
@@ -128,7 +128,7 @@ app.get('https://fierce-chamber-42175.herokuapp.com/callback', function(req, res
           //   'access_token': access_token
           // });
           //res.redirect("http://localhost:3000");
-          res.redirect("https://fierce-chamber-42175.herokuapp.com/refresh_token");
+          res.redirect("https://dry-cliffs-43170.herokuapp.com/refresh_token");
         }
         else {
           // res.send({
@@ -137,13 +137,13 @@ app.get('https://fierce-chamber-42175.herokuapp.com/callback', function(req, res
           //   'body': body
           // });
           //res.redirect("http://localhost:3000");
-         res.redirect("https://fierce-chamber-42175.herokuapp.com/refresh_token");
+         res.redirect("https://dry-cliffs-43170.herokuapp.com/refresh_token");
         }
       });
     }
   });
 
-app.get('https://fierce-chamber-42175.herokuapp.com/usertoptracks', function(req, res) {
+app.get('https://dry-cliffs-43170.herokuapp.com/usertoptracks', function(req, res) {
     spotifyApi.getMyTopTracks({ limit: 50})
     .then(function(data) {
       let topTracks = data.body.items;
@@ -183,7 +183,7 @@ app.get('https://fierce-chamber-42175.herokuapp.com/usertoptracks', function(req
     });
   });
 
-  app.get('https://fierce-chamber-42175.herokuapp.com/trackdata/', function(req, res) {
+  app.get('https://dry-cliffs-43170.herokuapp.com/trackdata/', function(req, res) {
     let trackiesy = req.query.tracks;
     // console.log(trackiesy);
     spotifyApi.getAudioFeaturesForTracks(trackiesy)
@@ -197,7 +197,7 @@ app.get('https://fierce-chamber-42175.herokuapp.com/usertoptracks', function(req
     });
   });
 
-  app.get('https://fierce-chamber-42175.herokuapp.com/playlisttracks/', function(req, res) {
+  app.get('https://dry-cliffs-43170.herokuapp.com/playlisttracks/', function(req, res) {
     let playlist = req.query.playlist;
     spotifyApi.getPlaylistTracks(playlist, {
     offset: 0,
