@@ -128,7 +128,7 @@ app.get('https://dry-cliffs-43170.herokuapp.com/callback', function(req, res) {
           //   'access_token': access_token
           // });
           //res.redirect("http://localhost:3000");
-          res.redirect("https://dry-cliffs-43170.herokuapp.com/refresh_token");
+          res.redirect("/refresh_token");
         }
         else {
           // res.send({
@@ -137,13 +137,13 @@ app.get('https://dry-cliffs-43170.herokuapp.com/callback', function(req, res) {
           //   'body': body
           // });
           //res.redirect("http://localhost:3000");
-         res.redirect("https://dry-cliffs-43170.herokuapp.com/refresh_token");
+         res.redirect("/refresh_token");
         }
       });
     }
   });
 
-app.get('https://dry-cliffs-43170.herokuapp.com/usertoptracks', function(req, res) {
+app.get('/usertoptracks', function(req, res) {
     spotifyApi.getMyTopTracks({ limit: 50})
     .then(function(data) {
       let topTracks = data.body.items;
@@ -183,7 +183,7 @@ app.get('https://dry-cliffs-43170.herokuapp.com/usertoptracks', function(req, re
     });
   });
 
-  app.get('https://dry-cliffs-43170.herokuapp.com/trackdata/', function(req, res) {
+  app.get('/trackdata/', function(req, res) {
     let trackiesy = req.query.tracks;
     // console.log(trackiesy);
     spotifyApi.getAudioFeaturesForTracks(trackiesy)
@@ -197,7 +197,7 @@ app.get('https://dry-cliffs-43170.herokuapp.com/usertoptracks', function(req, re
     });
   });
 
-  app.get('https://dry-cliffs-43170.herokuapp.com/playlisttracks/', function(req, res) {
+  app.get('/playlisttracks/', function(req, res) {
     let playlist = req.query.playlist;
     spotifyApi.getPlaylistTracks(playlist, {
     offset: 0,
