@@ -10,9 +10,10 @@ var helmet = require('helmet');
 var compression = require('compression');
 
 
+
 //const { code } = require('tar/lib/types');
 const app = express()
-const port = 3001
+const port = process.env.PORT || 3001
 //const unirest = require("unirest")
 //var redirect_uri = 'http://localhost:3001/callback'
 var redirect_uri = 'https://fierce-chamber-42175.herokuapp.com/callback'
@@ -215,7 +216,13 @@ app.get('https://fierce-chamber-42175.herokuapp.com/usertoptracks', function(req
   );
   });
 
-  app.listen(process.env.PORT, function () {
+  if (process.env.NODE_ENV === "production") {
+    app.use(express.static('build'))
+    // app.get('*', (req,res) => {
+    //   req.sendFIle(path.resolve(_dirname, 'build', 'index.html'))
+    // })
+  }
+  app.listen(port, function () {
     console.log("express has started on port 3001");
   });
 //request top tracks
