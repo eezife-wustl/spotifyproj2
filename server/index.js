@@ -13,6 +13,7 @@ var compression = require('compression');
 
 //const { code } = require('tar/lib/types');
 const app = express()
+const path = require("path");
 const port = process.env.PORT || 3001
 //const unirest = require("unirest")
 //var redirect_uri = 'http://localhost:3001/callback'
@@ -216,12 +217,18 @@ app.get('/usertoptracks', function(req, res) {
   );
   });
 
-  if (process.env.NODE_ENV === "production") {
-    app.use(express.static('build'))
-    // app.get('*', (req,res) => {
-    //   req.sendFIle(path.resolve(_dirname, 'build', 'index.html'))
-    // })
-  }
+  // if (process.env.NODE_ENV === "production") {
+  //   app.use(express.static('build'))
+  //   // app.get('*', (req,res) => {
+  //   //   req.sendFIle(path.resolve(_dirname, 'build', 'index.html'))
+  //   // })
+  // }
+  app.use(express.static(path.join(__dirname, "client", "build")));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.join(__dirname, "client", "build", "index.html"));
+  });
+  
   app.listen(port, function () {
     console.log("express has started on port 3001");
   });
