@@ -180,10 +180,10 @@ app.get('/usertoptracks', function(req, res) {
       if (!error && response.statusCode === 200) {
         var access_token = body.refresh_token;
         spotifyApi.setAccessToken(access_token);
-        res.redirect("http://localhost:3000");
+        res.redirect("https://dry-cliffs-43170.herokuapp.com");
       }
       else {
-        res.redirect("http://localhost:3000/?status=success");
+        res.redirect("https://dry-cliffs-43170.herokuapp.com/?status=success");
       }
     });
   });
