@@ -28,8 +28,8 @@ const code_verifier = challenge.code_verifier
 const code = challenge.code_challenge
 const SpotifyWebApi = require('spotify-web-api-node');
 var resAuthorizationCode;
-var cors = require('cors')
-app.use(cors())
+// var cors = require('cors')
+// app.use(cors())
 app.use(compression()); //Compress all routes
 app.use(helmet());
 var spotifyApi = new SpotifyWebApi({
@@ -228,7 +228,7 @@ app.get('/usertoptracks', function(req, res) {
   app.get("*", (req, res) => {
     res.sendFile(path.join(__dirname, "client", "build", "index.html"));
   });
-  
+
   app.listen(port, function () {
     console.log("express has started on port 3001");
   });
