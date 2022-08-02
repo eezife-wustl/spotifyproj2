@@ -18,6 +18,11 @@
   src: url('../Jost/TrueType/Jost-300-Light.ttf') format('truetype');      
 }
 
+@font-face {
+  font-family: 'Jost Semi';
+  src: url('../Jost/TrueType/Jost-600-Semi.ttf') format('truetype');      
+}
+
 .start {
   text-decoration: none;
   color: white;
