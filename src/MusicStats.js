@@ -178,7 +178,7 @@ function MusicStats({audiodata}) {
                 valence aligns to the color wheel. 
                 Listening to more negative music will produce a more blue-ish hued musiac, 
                 while the most positive music will produce a more purple hued musiac. 
-                The music you listen to tends to be <b>{setValenceMusicTaste(valence)}</b>.  </span>
+                The music you listen to tends to be <i>{setValenceMusicTaste(valence)}</i>.  </span>
         <Container>
                 <Valence valence={valence} color={setValenceColor(valence)}>Valence</Valence>
         </Container>
@@ -186,7 +186,7 @@ function MusicStats({audiodata}) {
         <span> The danceability of a track is calculated using tempo, rhythm, stability, beat strength and more. 
                 Listening to more danceable music will produce more triangles in the musiac, 
                 while to less danceable music will produce less individual triangles. 
-                The music you listen to tends to be <b>{setDanceMusicTaste(dance)}</b>.  </span>
+                The music you listen to tends to be <i>{setDanceMusicTaste(dance)}</i>.  </span>
         <Container>
                 <Danceability dance={dance}>Danceability</Danceability>
         </Container>
@@ -194,7 +194,7 @@ function MusicStats({audiodata}) {
         <span> Energy describes musics intensity and activity. More energetic music is fast, loud, and noisy.
                 Listening to more energetic music creates a more chaotic musiac, 
                 while less energetic music produces a more structured musiac. 
-                The music you listen to tends to be <b>{setEnergyMusicTaste(energy)}</b>.  </span>
+                The music you listen to tends to be <i>{setEnergyMusicTaste(energy)}</i>.  </span>
         <Container>
                 <Energy energy={energy}>Energy</Energy>
         </Container>
