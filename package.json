@@ -18,7 +18,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "start": "cd server && yarn start"
+    "start": "cd server && npm start"
   },
   "proxy": "https://dry-cliffs-43170.herokuapp.com",
   "eslintConfig": {
