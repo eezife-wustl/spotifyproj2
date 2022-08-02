@@ -32,6 +32,10 @@ var resAuthorizationCode;
 // app.use(cors())
 app.use(compression()); //Compress all routes
 app.use(helmet());
+const buildPath = path.join(__dirname, '..', 'build');
+app.use(express.static(buildPath));
+
+
 var spotifyApi = new SpotifyWebApi({
     clientId: client_id,
     clientSecret: client_secret,
@@ -219,9 +223,9 @@ app.get('/usertoptracks', function(req, res) {
 
   // if (process.env.NODE_ENV === "production") {
   //   app.use(express.static('build'))
-  //   // app.get('*', (req,res) => {
-  //   //   req.sendFIle(path.resolve(_dirname, 'build', 'index.html'))
-  //   // })
+  //   app.get('*', (req,res) => {
+  //     req.sendFIle(path.resolve(_dirname, 'build', 'index.html'))
+  //   })
   // }
   // app.use(express.static(path.join(__dirname, "client", "build")));
 
