@@ -70,7 +70,7 @@ var scope = 'user-top-read';
 // })))
 
 // request access from user
-app.get('https://dry-cliffs-43170.herokuapp.com/login', function(req, res) {   
+app.get('/login', function(req, res) {   
     req.header("Access-Control-Allow-Origin", "*");
     var scope = 'user-top-read';
   
@@ -92,7 +92,7 @@ app.get('https://dry-cliffs-43170.herokuapp.com/login', function(req, res) {
 // })
 
   //request access token
-app.get('https://dry-cliffs-43170.herokuapp.com/callback', function(req, res) {
+app.get('/callback', function(req, res) {
 
     var code = req.query.code || code || null ;
     var state = req.query.state || state || null;
