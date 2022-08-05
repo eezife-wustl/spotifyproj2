@@ -42,7 +42,7 @@ var spotifyApi = new SpotifyWebApi({
     redirectUri: redirect_uri
   });
 
-//https://www.kindacode.com/article/how-to-easily-generate-a-random-string-in-node-js/
+//https://www.kindacode.com/article/how-to-easily-generate-a-random-string-in-node-js///
   generateRandomString = (myLength) => {
     const chars =
       "AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz1234567890";
