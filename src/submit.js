@@ -163,7 +163,7 @@ function Submit(props) {
           {/* <a id="startButton" className="start" onClick={hideButton}>Start Here</a>  */}
           {status ?  
           <>
-          <a id="startButton" className="start" href="/login" onClick={hideButton}>Login to Spotify</a>
+          <a id="startButton" className="start" href="https://musiacs-by-erika.herokuapp.com/login" onClick={hideButton}>Login to Spotify</a>
           <form className="toAlignStuff" onSubmit={handleSubmit}>
            <input type="submit" value="Generate Musiac!" className="submitbutton"/>
           </form> 

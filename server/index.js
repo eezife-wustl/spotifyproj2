@@ -80,9 +80,7 @@ app.get('/login', function(req, res) {
         client_id: client_id,
         scope: scope,
         redirect_uri: redirect_uri,
-        code_challenge_method: code_challenge_method,
-        state: state,
-        code_challenge: code
+        state: state
       }));
   });
 
@@ -92,9 +90,10 @@ app.get('/login', function(req, res) {
 // })
 
   //request access token
-app.get('/callback', function(req, res) {
+  app.get('/callback', function(req, res) {
 
-    var code = req.query.code || code || null ;
+    let code = req.query.code || code || null ;
+    console.log(code)
     var state = req.query.state || state || null;
   
     if (state === null) {
@@ -109,8 +108,7 @@ app.get('/callback', function(req, res) {
           code: code,
           redirect_uri: redirect_uri,
           grant_type: 'authorization_code',
-          client_id: client_id,
-          code_verifier: code_verifier
+          client_id: client_id
         },
         headers: {
           'Authorization': 'Basic ' + Buffer.from(`${client_id}:${client_secret}`).toString('base64'),
@@ -120,31 +118,23 @@ app.get('/callback', function(req, res) {
 
       };
       //res.send(Buffer.from(`${client_id}:${client_secret}`).toString('base64'))
-      request.post(authOptions, function(error, response, body) {
-        var access_token = body.access_token;
-        // res.send({
-        //   'access_token': access_token
-        // });
-        if (!error && response.statusCode === 200) {
-          var access_token = body.access_token;
-
-          spotifyApi.setAccessToken(access_token);
-          // res.send({
-          //   'access_token': access_token
-          // });
-          //res.redirect("http://localhost:3000");
-          res.redirect("/refresh_token");
+      spotifyApi.authorizationCodeGrant(code).then(
+        function(data) {
+          console.log('The token expires in ' + data.body['expires_in']);
+          console.log('The access token is ' + data.body['access_token']);
+          console.log('The refresh token is ' + data.body['refresh_token']);
+      
+          var refresh_token = data.body['refresh_token']
+          // Set the access token on the API object to use it in later calls
+          spotifyApi.setAccessToken(data.body['access_token']);
+          spotifyApi.setRefreshToken(data.body['refresh_token']);
+          res.redirect("https://musiacs-by-erika.herokuapp.com/?status=success&refresh_token=" + refresh_token);
+        },
+        function(err) {
+          console.log('Something went wrong!', err);
+          res.redirect("https://musiacs-by-erika.herokuapp.com/?status=error");
         }
-        else {
-          // res.send({
-          //   'error': error,
-          //   'response.statusCode': response.statusCode,
-          //   'body': body
-          // });
-          //res.redirect("http://localhost:3000");
-         res.redirect("/refresh_token");
-        }
-      });
+      );
     }
   });
 
