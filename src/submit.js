@@ -101,7 +101,7 @@ function Submit(props) {
           },
           function(error) {
             setError(error);
-            noAudioData = true;
+            setnoAudioData(true);
             //console.log(noAudioData);
           }
           ).then(function(useaudiodata) {
