@@ -169,7 +169,7 @@ function Submit(props) {
           </form> 
           </>
           : 
-          <a id="startButton" className="start" href="http://localhost:3001/login" onClick={hideButton}>Login to Spotify</a> }
+          <a id="startButton" className="start" href="https://dry-cliffs-43170.herokuapp.com/login" onClick={hideButton}>Login to Spotify</a> }
 
           {/* {error} */}
           {/* {items.map((track, index) => (
