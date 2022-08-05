@@ -84,7 +84,7 @@ function Submit(props) {
         })
         .then(function(parseTracks) {
           parseTracks.topTracks.map((track, index) => (
-            trackIDS = trackIDS + "tracks=" + track.id + '&',
+            trackIDS = trackIDS + "tracks=" + track.id + '&'
             //console.log(track.id)
             ))
             trackIDS = trackIDS.substring(0, trackIDS.length-1)
