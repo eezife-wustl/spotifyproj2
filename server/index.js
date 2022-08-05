@@ -39,6 +39,7 @@ app.use(express.static(buildPath));
 app.use(
   session({
     name: 'session',
+    keys: ['key1', 'key2'],
     spotifyAccount: ["something"],
     expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours
   })
