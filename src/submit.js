@@ -85,7 +85,7 @@ function Submit(props) {
         .then(function(parseTracks) {
           parseTracks.topTracks.map((track, index) => (
             trackIDS = trackIDS + "tracks=" + track.id + '&',
-            console.log(track.id)
+            //console.log(track.id)
             ))
             trackIDS = trackIDS.substring(0, trackIDS.length-1)
             return trackIDS
@@ -96,13 +96,13 @@ function Submit(props) {
             }
           ).then(function(audiodata) {
               audiodata = audiodata.json();
-              console.log(audiodata)
+              //console.log(audiodata)
               return audiodata;
           },
           function(error) {
             setError(error);
             noAudioData = true;
-            console.log(noAudioData);
+            //console.log(noAudioData);
           }
           ).then(function(useaudiodata) {
             audio = useaudiodata.audioFeatures;
@@ -155,7 +155,7 @@ function Submit(props) {
       //https://www.w3schools.com/howto/howto_js_toggle_hide_show.asp
       const hideButton = () => {
         submitted(true);
-        console.log("test");
+        //console.log("test");
       }
 
     return (
@@ -169,7 +169,7 @@ function Submit(props) {
           </form> 
           </>
           : 
-          <a id="startButton" className="start" href="https://dry-cliffs-43170.herokuapp.com/login" onClick={hideButton}>Login to Spotify</a> }
+          <a id="startButton" className="start" href="https://musiacs-by-erika.herokuapp.com/login" onClick={hideButton}>Login to Spotify</a> }
 
           {/* {error} */}
           {/* {items.map((track, index) => (
