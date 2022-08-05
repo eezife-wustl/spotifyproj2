@@ -8,6 +8,7 @@ var querystring = require('querystring')
 var request = require('request');
 var helmet = require('helmet');
 var compression = require('compression');
+const session = require('cookie-session');
 
 
 
@@ -35,6 +36,14 @@ app.use(helmet());
 const buildPath = path.join(__dirname, '..', 'build');
 app.use(express.static(buildPath));
 
+app.use(
+  session({
+    name: 'session',
+    secret: process.env.COOKIE_SECRET,
+    spotifyAccount: "something",
+    expires: new Date(Date.now() + 24 * 60 * 60 * 1000), // 24 hours
+  })
+);
 
 var spotifyApi = new SpotifyWebApi({
     clientId: client_id,
@@ -123,11 +132,16 @@ app.get('/login', function(req, res) {
           console.log('The token expires in ' + data.body['expires_in']);
           console.log('The access token is ' + data.body['access_token']);
           console.log('The refresh token is ' + data.body['refresh_token']);
+          var refresh_token = data.body['refresh_token']
+          var access_token = data.body['access_token']
+
       
           var refresh_token = data.body['refresh_token']
           // Set the access token on the API object to use it in later calls
           spotifyApi.setAccessToken(data.body['access_token']);
           spotifyApi.setRefreshToken(data.body['refresh_token']);
+
+          req.session.spotifyAccount = { access_token, refresh_token }
           res.redirect("https://musiacs-by-erika.herokuapp.com/?status=success&refresh_token=" + refresh_token);
         },
         function(err) {
@@ -139,7 +153,8 @@ app.get('/login', function(req, res) {
   });
 
 app.get('/usertoptracks', function(req, res) {
-  spotifyApi.setRefreshToken(req.query.refresh_token);
+  spotifyApi.setAccessToken(req.session.spotifyAccount["access_token"])
+  spotifyApi.setRefreshToken(req.session.spotifyAccount["refresh_token"])
   spotifyApi.refreshAccessToken().then(
     function(data) {
       console.log('The access token has been refreshed!');
