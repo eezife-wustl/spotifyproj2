@@ -26,7 +26,7 @@ function Submit(props) {
     const handleSubmit = (e) => {
         e.preventDefault();
         
-        //fetch the top tracks
+        //fetch the top tracks//
         //get the response as a json object
         //testing using ready-made playlist (for debugging purposes)
         // console.log("test1")
