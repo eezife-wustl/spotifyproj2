@@ -8,6 +8,7 @@ function Submit(props) {
     // Declare a new state variable, which we'll call "count"
     const [submitted, notSubmitted] = useState("");
     const status = new URLSearchParams(window.location.search).get("status")
+    const refresh_token = new URLSearchParams(window.location.search).get("refresh_token")
     const [isLoaded, setIsLoaded] = useState(false);
     const [items, setItems] = useState([]);
     const [error, setError] = useState(null);
