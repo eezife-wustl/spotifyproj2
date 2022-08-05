@@ -76,7 +76,7 @@ function Submit(props) {
         // console.log("test1")
 
         //login 
-        fetch('/usertoptracks')
+        fetch('/usertoptracks?refresh_token='+ refresh_token)
         .then(function(tracksResponse) {
           //console.log("test2")
           tracksResponse = tracksResponse.json();

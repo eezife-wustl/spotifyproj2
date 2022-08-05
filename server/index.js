@@ -139,6 +139,18 @@ app.get('/login', function(req, res) {
   });
 
 app.get('/usertoptracks', function(req, res) {
+  spotifyApi.setRefreshToken(req.query.refresh_token);
+  spotifyApi.refreshAccessToken().then(
+    function(data) {
+      console.log('The access token has been refreshed!');
+  
+      // Save the access token so that it's used in future calls
+      spotifyApi.setAccessToken(data.body['access_token']);
+      console.log(data.body['access_token']);
+    },
+    function(err) {
+      console.log('Could not refresh access token', err);
+    });
     spotifyApi.getMyTopTracks({ limit: 50})
     .then(function(data) {
       let topTracks = data.body.items;
