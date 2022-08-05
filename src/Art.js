@@ -4,6 +4,8 @@ import Sketch from "react-p5";
 
 function Art({audiodata}) {
   let valence = audiodata[4];
+  let speechiness = audiodata[6];
+  let spe;
   //let valence = 0.9;
   let vl;
   function random(min, max) {
@@ -14,6 +16,14 @@ function Art({audiodata}) {
     let energy = 0;
     let qe = random(20, 40)
     let qd = random(80, 100)
+    // let colorpicker = random(0, 100);
+    // let colorpicked;
+
+    // console.log("color" + colorpicker);
+    // if (colorpicker < 33) {
+    //   colorpicked = colorB;
+    // }
+    // else colorpicked = colorA;
     p5.fill(c, qe, qd);
     //p5.stroke(vl, qe, qd);
     p5.triangle(x, y, X, Y, a, b);
@@ -50,12 +60,12 @@ let DY = (distortion) * (b-y) + y;
 
     //let DX=((a-x)*(distortion)+x);
     let middleX = ((x+a)/((en)));
-    console.log("DX" + DX);
+  //  console.log("DX" + DX);
 
     //calculate midpoint of y coordinate
  //   let DY=((b-y)*(distortion)+y);
     let middleY = ((y+b)/((1-en)));
-    console.log("DY" + DY);
+  //  console.log("DY" + DY);
     //midpoint
     //draw the line
     //a = x coordinate of opposing point to middle line
@@ -106,69 +116,141 @@ let DY = (distortion) * (b-y) + y;
     //more sad = more blue
     // (0=red, 60=yellow, 120=green, 180=cyan, 240=blue, 300=magenta)
     
-    //very sad = blue
-    if (valence >= 0 && valence < 0.05) {
-      vl = random(222, 240);
+    //very sad = DARK blue
+    if (valence >= 0 && valence < 0.075) {
+      vl = random(235, 240);
     }
-    if (valence >= 0.05 && valence < 0.10) {
-      vl = random(204, 222);
+    if (valence >= 0.075 && valence < 0.15) {
+      vl = random(230, 235);
     }
-    if (valence >= 0.10 && valence < 0.15) {
-      vl = random(186, 204);
+    if (valence >= 0.15 && valence < 0.225) {
+      vl = random(225, 230);
     }
-    if (valence >= 0.15 && valence < 0.20) {
-      vl = random(168, 186);
-    }
-    //sad = lighter blue
-    if (valence >= 0.20 && valence < 0.25) {
-      vl = random(150, 168);
-    }
-    if (valence >= 0.25 && valence < 0.30) {
-      vl = random(132, 150);
-    }
-    if (valence >= 0.30 && valence < 0.35) {
-      vl = random(114, 132);
-    }
-    if (valence >= 0.35 && valence < 0.40) {
-      vl = random(96, 114);
-    }
-    //balanced
-    if (valence >= 0.40 && valence < 0.45) {
-      vl = random(78, 96);
-    }
-    if (valence >= 0.45 && valence < 0.50) {
-      vl = random(60, 78);
-    }
-    if (valence >= 0.50 && valence < 0.55) {
-      vl = random(42, 60);
-    }
-    if (valence >= 0.55 && valence < 0.60) {
-      vl = random(24, 42);
-    }
-    //happy
-    if (valence >= 0.60 && valence < 0.65) {
-      vl = random(24, 42);
-    }
-    if (valence >= 0.65 && valence < 0.70) {
-      vl = random(6, 24);
-    }
-    if (valence >= 0.70 && valence < 0.75) {
-      vl = random(342, 360);
-    }
-    if (valence >= 0.75 && valence < 0.80) {
-      vl = random(324, 342);
-    }
-    //very happy
-    if (valence >= 0.80 && valence < 0.85) {
-      vl = random(306, 324);
-    }
-    if (valence >= 0.85 && valence < 0.90) {
-      vl = random(288, 306);
-    }
-    if (valence >= 0.90 && valence < 1) {
-      vl = random(270, 288);
+    if (valence >= 0.225 && valence < 0.3) {
+      vl = random(220, 225);
     }
 
+    //sad = lighter blues 0.3 - 0.4
+    if (valence >= 0.3 && valence < 0.325) {
+      vl = random(197.5, 210);
+    }
+    if (valence >= 0.325 && valence < 0.3575) {
+      vl = random(185, 197.5);
+    }
+    if (valence >= 0.3575 && valence < 0.3825) {
+      vl = random(172.5, 185);
+    }
+    if (valence >= 0.3825 && valence < 0.40) {
+      vl = random(160.5, 172.5);
+    }
+
+
+    //slightly less sad = greens 0.4 -0.5
+    if (valence >= 0.4 && valence < 0.425) {
+      vl = random(135, 150);
+    }
+    if (valence >= 0.425 && valence < 0.4375) {
+      vl = random(120, 135);
+    }
+    if (valence >= 0.4375 && valence < 0.4825) {
+      vl = random(105, 120);
+    }
+    if (valence >= 0.4825 && valence < 0.5) {
+      vl = random(90, 105);
+    }
+
+    //balanced yellow 0.5 - 0.6
+    if (valence >= 0.5 && valence < 0.525) {
+      vl = random(55, 60);
+    }
+    if (valence >= 0.525 && valence < 0.5375) {
+      vl = random(50, 55);
+    }
+    if (valence >= 0.5375 && valence < 0.5825) {
+      vl = random(45, 50);
+    }
+    if (valence >= 0.5825 && valence < 0.6) {
+      vl = random(40, 45);
+    }
+
+
+    //happy 0.6 - 0.7 orange reds
+    if (valence >= 0.60 && valence < 0.625) {
+      vl = random(32.5, 40);
+    }
+    if (valence >= 0.625 && valence < 0.6375) {
+      vl = random(25, 32.5);
+    }
+    if (valence >= 0.6375 && valence < 0.6825) {
+      vl = random(17.5, 25);
+    }
+    if (valence >= 0.6825 && valence < 0.70) {
+      vl = random(10, 17.5);
+    }
+
+    //slighty more happy 0.7 - 0.8 red
+    if (valence >= 0.70 && valence < 0.725) {
+      vl = random(355, 360);
+    }
+    if (valence >= 0.725 && valence < 0.7375) {
+      vl = random(350, 355);
+    }
+    if (valence >= 0.7375 && valence < 0.7825) {
+      vl = random(345, 350);
+    }
+    if (valence >= 0.7825 && valence < 0.80) {
+      vl = random(340, 345);
+    }
+
+    //very happy super RED
+    if (valence >= 0.80 && valence < 0.85) {
+      vl = random(341.25, 345);
+    }
+    if (valence >= 0.85 && valence < 0.90) {
+      vl = random(337.5, 341.25);
+    }
+    if (valence >= 0.90 && valence <= 1) {
+      vl = random(333.75, 337.5);
+    }
+
+
+    //SPEECHINESS
+    if (speechiness >= 0 && speechiness < 0.02) {
+      spe = random(265, 270);
+    }
+    if (speechiness >= 0.02 && speechiness < 0.051) {
+      spe = random(270, 275);
+    }
+    if (speechiness >= 0.051 && speechiness < 0.082) {
+      spe = random(275, 280);
+    }
+    if (speechiness >= 0.082 && speechiness < 0.113) {
+      spe = random(280, 285);
+    }
+    if (speechiness >= 0.113 && speechiness < 0.144) {
+      spe = random(285, 290);
+    }
+    if (speechiness >= 0.144 && speechiness < 0.175) {
+      spe = random(290, 295);
+    }
+    if (speechiness >= 0.175 && speechiness < 0.206) {
+      spe = random(295, 300);
+    }
+    if (speechiness >= 0.206 && speechiness < 0.237) {
+      spe = random(300, 305);
+    }
+    if (speechiness >= 0.237 && speechiness < 0.268) {
+      spe = random(305, 310);
+    }
+    if (speechiness >= 0.268 && speechiness < 0.299) {
+      spe = random(310, 315);
+    }
+    if (speechiness >= 0.299 && speechiness < 0.33) {
+      spe = random(315, 320);
+    }
+    if (speechiness > 0.33) {
+      spe = random(320, 325);
+    }
 
 
     // if (valence >= 0 && valence < 0.34) {
@@ -187,13 +269,13 @@ let DY = (distortion) * (b-y) + y;
     p5.colorMode(p5.HSB, 360, 100, 100);
     // p5.stroke(vl, 40, 100);
     p5.noStroke();
-    let sat = random(20,40);
+    let sat = random(40,60);
     let bal = random(80,100);
-    p5.fill(vl, sat, bal);
+   // p5.fill(vl, sat, bal);
     sat = random(20,40);
     bal = random(80,100);
     //p5.triangle(0, 0, 0, 400, 400, 400);
-    p5.fill(vl, sat, bal);
+   // p5.fill(vl, sat, bal);
    //p5.triangle(0, 0, 400, 0, 400, 400);
 
     //more danceability = higher base case = more triangles
@@ -219,7 +301,7 @@ let DY = (distortion) * (b-y) + y;
    // danceability = 5;
     //console.log(danceability)
     //var zzz = random(5,10);
-    console.log(valence);
+   // console.log(valence);
     
     p5.colorMode(p5.HSB, 360, 100, 100);
     let red = 300;

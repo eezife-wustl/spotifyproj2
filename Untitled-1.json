@@ -1,0 +1,2 @@
+"server": "nodemon index.js --ignore client"
+"start": "react-scripts start"

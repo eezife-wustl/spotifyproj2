@@ -21,6 +21,7 @@ function Submit(props) {
     let acousticness;
     let valence;
     let tempo;
+    const [noAudioData, setnoAudioData] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,7 +30,7 @@ function Submit(props) {
         //get the response as a json object
         //testing using ready-made playlist (for debugging purposes)
         // console.log("test1")
-        // fetch('/playlisttracks/?playlist=37i9dQZF1DXaXB8fQg7xif')
+        // fetch('/playlisttracks/?playlist=')
         // .then(function(tracksResponse) {
         //   console.log("test2")
         //   tracksResponse = tracksResponse.json();
@@ -56,8 +57,13 @@ function Submit(props) {
         //   },
         //   function(error) {
         //     setError(error);
+        //     setnoAudioData(true);
+        //     console.log(noAudioData);
         //   }
         //   ).then(function(useaudiodata) {
+        //     if (useaudiodata.audioFeatures == null) {
+
+        //     }
         //     audio = useaudiodata.audioFeatures;
         //     //console.log(audio);
         //     setSound(sound => [ ...sound, ...audioData(audio)]);
@@ -72,14 +78,14 @@ function Submit(props) {
         //login 
         fetch('/usertoptracks')
         .then(function(tracksResponse) {
-          console.log("test2")
+          //console.log("test2")
           tracksResponse = tracksResponse.json();
           return tracksResponse
         })
         .then(function(parseTracks) {
           parseTracks.topTracks.map((track, index) => (
-            trackIDS = trackIDS + "tracks=" + track.id + '&'
-            //console.log(track.id)
+            trackIDS = trackIDS + "tracks=" + track.id + '&',
+            console.log(track.id)
             ))
             trackIDS = trackIDS.substring(0, trackIDS.length-1)
             return trackIDS
@@ -95,6 +101,8 @@ function Submit(props) {
           },
           function(error) {
             setError(error);
+            noAudioData = true;
+            console.log(noAudioData);
           }
           ).then(function(useaudiodata) {
             audio = useaudiodata.audioFeatures;
@@ -161,7 +169,7 @@ function Submit(props) {
           </form> 
           </>
           : 
-          <a id="startButton" className="start" href="https://dry-cliffs-43170.herokuapp.com/login" onClick={hideButton}>Login to Spotify</a> }
+          <a id="startButton" className="start" href="http://localhost:3001/login" onClick={hideButton}>Login to Spotify</a> }
 
           {/* {error} */}
           {/* {items.map((track, index) => (
@@ -200,6 +208,8 @@ function Submit(props) {
             </div>
               <div className="Artwork">{isLoaded ? <Art className="test" audiodata={sound}/> : ""} </div> 
               <div className="ArtworkDesc">  {isLoaded ? <MusicStats audiodata={sound}/> : ""}</div>
+              <div className="ArtworkDesc">  {noAudioData ? "There was an error. You might not have enough listening history to generate a musiac (this app uses the past 6 months of listening history).": ""}</div>
+
       </div>
     );
   }
